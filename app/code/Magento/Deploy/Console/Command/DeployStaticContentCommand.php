@@ -111,6 +111,13 @@ class DeployStaticContentCommand extends Command
             }
         }
 
+        /*
+         * Disable garbage collection to improve performance of this shell script
+         * If it requires extra memory the script will have to be triggered like
+         * php -d memory_limit=1024M bin/magento setup:static-content:deploy
+         */
+        gc_disable();
+
         // run the deployment logic
         $filesUtil = $this->objectManager->create(Files::class);
 
