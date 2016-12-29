@@ -16,8 +16,7 @@ class WebsiteListCommand extends Command
 
     public function __construct(
         \Magento\Store\Api\WebsiteRepositoryInterface $websiteManagement
-    )
-    {
+    ) {
         $this->manager = $websiteManagement;
         parent::__construct();
     }
