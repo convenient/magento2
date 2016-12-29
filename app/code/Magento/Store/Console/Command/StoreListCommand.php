@@ -16,8 +16,7 @@ class StoreListCommand extends Command
 
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager
-    )
-    {
+    ) {
         $this->storeManager = $storeManager;
         parent::__construct();
     }
