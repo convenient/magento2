@@ -15,6 +15,7 @@ class CommandList implements \Magento\Framework\Console\CommandListInterface
      * @var ObjectManagerInterface
      */
     private $objectManager;
+    
     /**
      * Deployment Config
      *
@@ -24,6 +25,7 @@ class CommandList implements \Magento\Framework\Console\CommandListInterface
 
     /**
      * @param ObjectManagerInterface $objectManager
+     * @param DeploymentConfig $deploymentConfig
      */
     public function __construct(ObjectManagerInterface $objectManager, DeploymentConfig $deploymentConfig)
     {
