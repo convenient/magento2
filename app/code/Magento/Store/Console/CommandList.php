@@ -59,14 +59,13 @@ class CommandList implements \Magento\Framework\Console\CommandListInterface
      */
     protected function getCommandsClasses()
     {
-        $requiresInstallation = $this->getCommandsClassesWhichRequireInstallation();
-        $doesNotRequireInstallation = $this->getCommandsClassesWhichDoNotRequireInstallation();
+        $commands = $this->getCommandsClassesWhichDoNotRequireInstallation();
 
         if ($this->deploymentConfig->isAvailable()) {
-            return array_merge($requiresInstallation, $doesNotRequireInstallation);
-        } else {
-            return $doesNotRequireInstallation;
+            $commands = array_merge($commands, $this->getCommandsClassesWhichRequireInstallation());
         }
+
+        return $commands;
     }
 
     /**
