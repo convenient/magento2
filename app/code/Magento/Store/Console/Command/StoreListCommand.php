@@ -7,7 +7,8 @@ use Symfony\Component\Console\Command\Command;
 
 /**
  * Class StoreListCommand
- * @package Magento\Store\Console\Command
+ *
+ * Command for listing the configured stores
  */
 class StoreListCommand extends Command
 {

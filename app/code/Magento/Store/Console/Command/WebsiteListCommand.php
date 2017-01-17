@@ -7,7 +7,8 @@ use Symfony\Component\Console\Command\Command;
 
 /**
  * Class WebsiteListCommand
- * @package Magento\Store\Console\Command
+ *
+ * Command for listing the configured websites
  */
 class WebsiteListCommand extends Command
 {
