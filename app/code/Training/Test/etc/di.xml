@@ -11,4 +11,18 @@
         </arguments>
     </type>
 
+
+    <type name="Magento\Theme\Block\Html\Breadcrumbs">
+        <plugin name="Training_Test_Breadcrumbs" type="Training\Test\Plugin\TestPlugin" />
+    </type>
+
+    <type name="Magento\Theme\Block\Html\Footer">
+        <plugin name="Training_Test_Copyright" type="Training\Test\Plugin\TestPlugin" />
+    </type>
+
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="Training_Test_Product_Price" type="Training\Test\Plugin\TestPlugin" />
+    </type>
+
+
 </config>
