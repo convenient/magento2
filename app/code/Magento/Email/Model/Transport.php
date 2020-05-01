@@ -90,6 +90,12 @@ class Transport implements TransportInterface
     {
         try {
             $zendMessage = Message::fromString($this->message->getRawMessage())->setEncoding('utf-8');
+
+            $contentDisposition = $zendMessage->getHeaders()->get('Content-Disposition');
+            if ($contentDisposition instanceof \Zend\Mail\Header\HeaderInterface) {
+                $contentDisposition->setEncoding('ASCII');
+            }
+
             if (2 === $this->isSetReturnPath && $this->returnPathValue) {
                 $zendMessage->setSender($this->returnPathValue);
             } elseif (1 === $this->isSetReturnPath && $zendMessage->getFrom()->count()) {
