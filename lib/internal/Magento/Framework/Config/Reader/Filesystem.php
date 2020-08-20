@@ -152,21 +152,21 @@ class Filesystem implements \Magento\Framework\Config\ReaderInterface
                 } else {
                     $configMerger->merge($content);
                 }
+
+                $errors = [];
+                if ($configMerger && !$configMerger->validate($this->_schemaFile, $errors)) {
+                    $message = "Invalid Document triggered by $key \n";
+                    throw new \Magento\Framework\Exception\LocalizedException(
+                        new \Magento\Framework\Phrase($message . implode("\n", $errors))
+                    );
+                }
+
             } catch (\Magento\Framework\Config\Dom\ValidationException $e) {
                 throw new \Magento\Framework\Exception\LocalizedException(
                     new \Magento\Framework\Phrase(
                         'The XML in file "%1" is invalid:' . "\n%2\nVerify the XML and try again.",
                         [$key, $e->getMessage()]
                     )
-                );
-            }
-        }
-        if ($this->validationState->isValidationRequired()) {
-            $errors = [];
-            if ($configMerger && !$configMerger->validate($this->_schemaFile, $errors)) {
-                $message = "Invalid Document \n";
-                throw new \Magento\Framework\Exception\LocalizedException(
-                    new \Magento\Framework\Phrase($message . implode("\n", $errors))
                 );
             }
         }
@@ -177,6 +177,7 @@ class Filesystem implements \Magento\Framework\Config\ReaderInterface
         }
         return $output;
     }
+
 
     /**
      * Return newly created instance of a config merger
